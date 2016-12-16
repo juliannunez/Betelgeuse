@@ -3,7 +3,7 @@
         <li>
             <a href="#">Home</a>
         </li>
-        <li class="active">Aulas</li>
+        <li class="active">Microcurriculo</li>
     </ul>
 </div>
 <div class="page-content">
@@ -14,37 +14,38 @@
                 <div class="widget-body">
                     <div class="widget-main">
                         <h4 class="header blue lighter bigger">
-                            Aulas
+                            Microcurrículo
                         </h4>
                         <br/>
-                        <form name="roomForm" class="form-horizontal" role="form">
+                        <form name="microcurriculoForm" class="form-horizontal" role="form">
                             <div class="form-group">
-                                <label class="col-sm-5 control-label no-padding-right" for="number">Número</label>
+                                <label class="col-sm-5 control-label no-padding-right" for="semestre">Semestre</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                        <input type="text" class="form-control" placeholder="Número" name="number" ng-model="room.numero" focus/>
+                                        <input type="text" class="form-control" placeholder="Semestre" name="semestre" ng-model="microcurriculo.semestre" focus/>
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-5 control-label no-padding-right" for="capacity">Capacidad</label>
+                                <label class="col-sm-5 control-label no-padding-right" for="Codigo">Código</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                <input type="number" class="form-control" name = "capacity" placeholder="Número" ng-model="room.capacidad" required/>
+                                <input type="text" class="form-control" name = "Codigo" placeholder="Código del curso" ng-model="microcurriculo.cod_curso" required/>
                             </span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-5 control-label no-padding-right" for="roomType">Tipo</label>
+                                <label class="col-sm-5 control-label no-padding-right" for="link">Link</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Tipo de Aula" ng-model="room.tipo_aula" />
+                                <input type="text" class="form-control" placeholder="Link" ng-model="microcurriculo.link" />
                             </span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <span class="lbl col-sm-5"> </span>
                                 <div class="col-sm-7">
-                                    <button type="submit" class="width-35 pull-right btn btn-sm btn-primary" ng-click="rooms(room)" data-ng-disabled="signupForm.$invalid">
+                                    <button type="submit" class="width-35 pull-right btn btn-sm btn-primary" ng-click="microcurriculos(microcurriculo)" data-ng-disabled="signupForm.$invalid">
                                         Enviar
                                     </button>
                                 </div>

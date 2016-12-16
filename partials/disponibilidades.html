@@ -1,0 +1,79 @@
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li class="active">Disponibilidad de profesores</li>
+    </ul>
+</div>
+<div class="page-content">
+    <div class="row">
+        <div class="space-6"></div>
+        <div class="col-sm-6 col-sm-offset-1">
+            <div id="login-box" class="login-box visible widget-box no-border">
+                <div class="widget-body">
+                    <div class="widget-main">
+                        <h4 class="header blue lighter bigger">
+                            Disponibilidad de profesores
+                        </h4>
+                        <br/>
+                        <form name="disponibilidadForm" class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-5 control-label no-padding-right" for="tipo_doc">Tipo de documento</label>
+                                <div class="col-sm-7">
+                                    <span class="block input-icon input-icon-right">
+                                        <input type="text" class="form-control" placeholder="Tipo" name="tipo_doc" ng-model="disponibilidad.tipo_doc" focus/>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-5 control-label no-padding-right" for="nro_doc">Número de ID</label>
+                                <div class="col-sm-7">
+                                    <span class="block input-icon input-icon-right">
+                                <input type="text" class="form-control" name = "numero" placeholder="Número" ng-model="disponibilidad.nro_doc" required/>
+                            </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-5 control-label no-padding-right" for="dia">Día</label>
+                                <div class="col-sm-7">
+                                    <span class="block input-icon input-icon-right">
+                                <input type="text" class="form-control" placeholder="Día" ng-model="disponibilidad.dia" />
+                            </span>
+                                </div>
+                                </div>
+                                <div class="form-group">
+                                <label class="col-sm-5 control-label no-padding-right" for="hora_desde">Hora desde</label>
+                                <div class="col-sm-7">
+                                    <span class="block input-icon input-icon-right">
+                                <input type="number" class="form-control" placeholder="Hora desde" ng-model="disponibilidad.hora_desde" />
+                            </span>
+                                </div>
+                                </div>
+                                <div class="form-group">
+                                <label class="col-sm-5 control-label no-padding-right" for="hora_hasta">Hora hasta</label>
+                                <div class="col-sm-7">
+                                    <span class="block input-icon input-icon-right">
+                                <input type="number" class="form-control" placeholder="Hora hasta" ng-model="disponibilidad.hora_hasta" />
+                            </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <span class="lbl col-sm-5"> </span>
+                                <div class="col-sm-7">
+                                    <button type="submit" class="width-35 pull-right btn btn-sm btn-primary" ng-click="disponibilidades(disponibilidad)" data-ng-disabled="signupForm.$invalid">
+                                        Enviar
+                                    </button>
+                                </div>
+                            </div>
+                            </fieldset>
+                            <span class="lbl col-sm-5"> </span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- /.page-content -->

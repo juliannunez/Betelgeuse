@@ -3,6 +3,10 @@ app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location
     $scope.login = {};
     $scope.signup = {};
     $scope.rooms = {};
+    $scope.courses = {};
+    $scope.microcurriculos = {};
+    $scope.vinculos = {};
+
     $scope.doLogin = function (customer) {
         Data.post('login', {
             customer: customer
@@ -38,6 +42,59 @@ app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location
             }
         });
     };
+
+    $scope.courses = {codigo:'',nombre:'',nro_creditos:'',intensidad_horaria:'',version_pensum:''};
+    $scope.courses = function (customer) {
+        Data.post('courses', {
+            customer: customer
+        }).then(function (results) {
+            console.log(results);
+            Data.toast(results);
+            if (results.status == "success") {
+                $location.path('dashboard');
+            }
+        });
+    };
+
+    $scope.microcurriculos = {semestre:'',cod_curso:'',link:''};
+    $scope.microcurriculos = function (customer) {
+        Data.post('microcurriculos', {
+            customer: customer
+        }).then(function (results) {
+            console.log(results);
+            Data.toast(results);
+            if (results.status == "success") {
+                $location.path('dashboard');
+            }
+        });
+    };
+
+    $scope.vinculos = {tipo_doc:'',nro_doc:'',tipo:''};
+    $scope.vinculos = function (customer) {
+        Data.post('vinculos', {
+            customer: customer
+        }).then(function (results) {
+            console.log(results);
+            Data.toast(results);
+            if (results.status == "success") {
+                $location.path('dashboard');
+            }
+        });
+    };
+
+    $scope.disponibilidades = {tipo_doc:'',nro_doc:'',dia:'',hora_desde:'',hora_hasta:''};
+    $scope.disponibilidades = function (customer) {
+        Data.post('disponibilidades', {
+            customer: customer
+        }).then(function (results) {
+            console.log(results);
+            Data.toast(results);
+            if (results.status == "success") {
+                $location.path('dashboard');
+            }
+        });
+    };
+
 
     $scope.logout = function () {
         Data.get('logout').then(function (results) {

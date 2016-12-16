@@ -106,6 +106,128 @@ $app->post('/rooms', function() use ($app) {
         echoResponse(201, $response);
     }
 });
+
+$app->post('/courses', function() use ($app) {
+    $response = array();
+    $r = json_decode($app->request->getBody());
+    $db = new DbHandler();
+    $codigo = $r->customer->codigo;
+    $nombre = $r->customer->nombre;
+    $nro_creditos = $r->customer->nro_creditos;
+    $intensidad_horaria = $r->customer->intensidad_horaria;
+    $version_pensum = $r->customer->version_pensum;
+    $isUserExists = $db->getOneRecord("select 1 from curso where codigo='$codigo'");
+    if(!$isUserExists){
+        $tabble_name = "curso";
+        $column_names = array('codigo', 'nombre', 'nro_creditos', 'intensidad_horaria', 'version_pensum');
+        $result = $db->insertIntoTable($r->customer, $column_names, $tabble_name);
+        if ($result != NULL) {
+            $response["status"] = "success";
+            $response["message"] = "User account created successfully";
+            $response["uid"] = $result;
+            echoResponse(200, $response);
+        } else {
+            $response["status"] = "error";
+            $response["message"] = "Failed to create customer. Please try again";
+            echoResponse(201, $response);
+        }            
+    }else{
+        $response["status"] = "error";
+        $response["message"] = "Ya existe este curso";
+        echoResponse(201, $response);
+    }
+});
+$app->post('/microcurriculos', function() use ($app) {
+    $response = array();
+    $r = json_decode($app->request->getBody());
+    $db = new DbHandler();
+    $semestre = $r->customer->semestre;
+    $cod_curso = $r->customer->cod_curso;
+    $link = $r->customer->link;
+    $isUserExists = $db->getOneRecord("select 1 from curso where codigo='$cod_curso'");
+    if($isUserExists){
+        $tabble_name = "microcurriculo";
+        $column_names = array('semestre', 'cod_curso', 'link');
+        $result = $db->insertIntoTable($r->customer, $column_names, $tabble_name);
+        if ($result != NULL) {
+            $response["status"] = "success";
+            $response["message"] = "User account created successfully";
+            $response["uid"] = $result;
+            echoResponse(200, $response);
+        } else {
+            $response["status"] = "error";
+            $response["message"] = "Failed to create customer. Please try again";
+            echoResponse(201, $response);
+        }            
+    }else{
+        $response["status"] = "error";
+        $response["message"] = "No existe este curso";
+        echoResponse(201, $response);
+
+    }
+});
+
+$app->post('/vinculos', function() use ($app) {
+    $response = array();
+    $r = json_decode($app->request->getBody());
+    $db = new DbHandler();
+    $tipo_doc = $r->customer->tipo_doc;
+    $nro_doc = $r->customer->nro_doc;
+    $tipo = $r->customer->tipo;
+    $isUserExists = $db->getOneRecord("select 1 from profesor where nro_doc='$nro_doc'");
+    if($isUserExists){
+        $tabble_name = "vinculo_profesor";
+        $column_names = array('tipo_doc', 'nro_doc', 'tipo');
+        $result = $db->insertIntoTable($r->customer, $column_names, $tabble_name);
+        if ($result != NULL) {
+            $response["status"] = "success";
+            $response["message"] = "User account created successfully";
+            $response["uid"] = $result;
+            echoResponse(200, $response);
+        } else {
+            $response["status"] = "error";
+            $response["message"] = "Failed to create customer. Please try again";
+            echoResponse(201, $response);
+        }            
+    }else{
+        $response["status"] = "error";
+        $response["message"] = "No existe este profesor";
+        echoResponse(201, $response);
+
+    }
+});
+
+$app->post('/disponibilidades', function() use ($app) {
+    $response = array();
+    $r = json_decode($app->request->getBody());
+    $db = new DbHandler();
+    $tipo_doc = $r->customer->tipo_doc;
+    $nro_doc = $r->customer->nro_doc;
+    $dia = $r->customer->dia;
+    $hora_desde = $r->customer->hora_desde;
+    $hora_hasta = $r->customer->hora_hasta;
+    $isUserExists = $db->getOneRecord("select 1 from profesor where nro_doc='$nro_doc'");
+    if($isUserExists){
+        $tabble_name = "vinculo_profesor";
+        $column_names = array('tipo_doc', 'nro_doc', 'dia', 'hora_desde', 'hora_hasta');
+        $result = $db->insertIntoTable($r->customer, $column_names, $tabble_name);
+        if ($result != NULL) {
+            $response["status"] = "success";
+            $response["message"] = "User account created successfully";
+            $response["uid"] = $result;
+            echoResponse(200, $response);
+        } else {
+            $response["status"] = "error";
+            $response["message"] = "Failed to create customer. Please try again";
+            echoResponse(201, $response);
+        }            
+    }else{
+        $response["status"] = "error";
+        $response["message"] = "No existe este profesor";
+        echoResponse(201, $response);
+
+    }
+});
 $app->get('/logout', function() {
     $db = new DbHandler();
     $session = $db->destroySession();

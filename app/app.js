@@ -28,6 +28,26 @@ app.config(['$routeProvider',
                 templateUrl: 'partials/rooms.html',
                 controller: 'authCtrl'
             })
+            .when('/courses', {
+                title: 'courses',
+                templateUrl: 'partials/courses.html',
+                controller: 'authCtrl'
+            })
+            .when('/microcurriculos', {
+                title: 'microcurriculos',
+                templateUrl: 'partials/microcurriculos.html',
+                controller: 'authCtrl'
+            })
+            .when('/vinculos', {
+                title: 'vinculos',
+                templateUrl: 'partials/vinculos.html',
+                controller: 'authCtrl'
+            })
+            .when('/disponibilidades', {
+                title: 'disponibilidades',
+                templateUrl: 'partials/disponibilidades.html',
+                controller: 'authCtrl'
+            })
             .when('/', {
                 title: 'Login',
                 templateUrl: 'partials/login.html',
@@ -51,7 +71,7 @@ app.config(['$routeProvider',
 
                 } else {
                     var nextUrl = next.$$route.originalPath;
-                    if (nextUrl == '/signup' || nextUrl == '/login' || nextUrl == '/rooms') {
+                    if (nextUrl == '/signup' || nextUrl == '/login' || nextUrl == '/rooms' || nextUrl == '/courses' || nextUrl == '/microcurriculos' || nextUrl == '/vinculos' || nextUrl == '/disponibilidades') {
 
                     } else {
                         $location.path("/login");
