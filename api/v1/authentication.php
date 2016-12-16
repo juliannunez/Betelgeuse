@@ -41,21 +41,22 @@ $app->post('/login', function() use ($app) {
         }
     echoResponse(200, $response);
 });
+
 $app->post('/signUp', function() use ($app) {
     $response = array();
     $r = json_decode($app->request->getBody());
     $db = new DbHandler();
-    $idType = $r->customer->idType;
-    $id = $r->customer->id;
-    $name = $r->customer->name;
-    $email = $r->customer->linkCv;
-    $phone = $r->customer->phone;
+    $tipo_doc = $r->customer->tipo_doc;
+    $nro_doc = $r->customer->nro_doc;
+    $nombre = $r->customer->nombre;
+    $link_cv = $r->customer->link_cv;
+    $telefono = $r->customer->telefono;
     $email = $r->customer->email;
-    $address = $r->customer->address;
-    $isUserExists = $db->getOneRecord("select 1 from profesor where nro_doc='$id'");
+    $direccion = $r->customer->direccion;
+    $isUserExists = $db->getOneRecord("select 1 from profesor where nro_doc='$nro_doc'");
     if(!$isUserExists){
         $tabble_name = "profesor";
-        $column_names = array('tipo_doc', 'nro_doc', 'nombre', 'link_cv', 'celular', 'direccion', 'email');
+        $column_names = array('tipo_doc', 'nro_doc', 'nombre', 'link_cv', 'telefono', 'direccion', 'email');
         $result = $db->insertIntoTable($r->customer, $column_names, $tabble_name);
         if ($result != NULL) {
             $response["status"] = "success";
@@ -70,6 +71,38 @@ $app->post('/signUp', function() use ($app) {
     }else{
         $response["status"] = "error";
         $response["message"] = "An user with the provided phone or email exists!";
+        echoResponse(201, $response);
+    }
+});
+
+$app->post('/rooms', function() use ($app) {
+    $response = array();
+    $r = json_decode($app->request->getBody());
+    $db = new DbHandler();
+    $numero = $r->customer->numero;
+    $capacidad = $r->customer->capacidad;
+    $tipo_aula = $r->customer->tipo_aula;
+     echo '<script>';
+        echo 'console.log('. json_encode( $numero ) .')';
+        echo '</script>';
+    $isUserExists = $db->getOneRecord("select 1 from aula where numero='$numero'");
+    if(!$isUserExists){
+        $tabble_name = "aula";
+        $column_names = array('numero', 'capacidad', 'tipo_aula');
+        $result = $db->insertIntoTable($r->customer, $column_names, $tabble_name);
+        if ($result != NULL) {
+            $response["status"] = "success";
+            $response["message"] = "User account created successfully";
+            $response["uid"] = $result;
+            echoResponse(200, $response);
+        } else {
+            $response["status"] = "error";
+            $response["message"] = "Failed to create customer. Please try again";
+            echoResponse(201, $response);
+        }            
+    }else{
+        $response["status"] = "error";
+        $response["message"] = "Ya existe esa aula";
         echoResponse(201, $response);
     }
 });

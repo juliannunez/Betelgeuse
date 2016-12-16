@@ -22,7 +22,7 @@
                                 <label class="col-sm-5 control-label no-padding-right" for="idType">Tipo de ID</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                        <input type="text" class="form-control" placeholder="Tipo" name="idType" ng-model="signup.idType" focus/>
+                                        <input type="text" class="form-control" placeholder="Tipo" name="idType" ng-model="signup.tipo_doc" focus/>
                                     </span>
                                 </div>
                             </div>
@@ -30,7 +30,7 @@
                                 <label class="col-sm-5 control-label no-padding-right" for="id">ID</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" name = "id" placeholder="Numero" ng-model="signup.id" required/>
+                                <input type="text" class="form-control" name = "id" placeholder="Numero" ng-model="signup.nro_doc" required/>
                             </span>
                                 </div>
                             </div>
@@ -38,7 +38,7 @@
                                 <label class="col-sm-5 control-label no-padding-right" for="name">Nombre</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Nombre" ng-model="signup.name" />
+                                <input type="text" class="form-control" placeholder="Nombre" ng-model="signup.nombre" />
                             </span>
                                 </div>
                             </div>
@@ -46,7 +46,7 @@
                                 <label class="col-sm-5 control-label no-padding-right" for="linkCv">Link cv</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Link" ng-model="signup.linkCv" />
+                                <input type="text" class="form-control" placeholder="Link" ng-model="signup.link_cv" />
                             </span>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@
                                 <label class="col-sm-5 control-label no-padding-right" for="phone">Telefono</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Número" name="phone" ng-model="signup.phone"/>
+                                <input type="text" class="form-control" placeholder="Número" name="phone" ng-model="signup.telefono"/>
                             </span>
                                 </div>
                             </div>
@@ -70,7 +70,7 @@
                                 <label class="col-sm-5 control-label no-padding-right" for="address">Dirección</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Dirección" ng-model="signup.address" />
+                                <input type="text" class="form-control" placeholder="Dirección" ng-model="signup.direccion" />
                             </span>
                                 </div>
                             </div>
@@ -78,7 +78,7 @@
                                 <span class="lbl col-sm-5"> </span>
                                 <div class="col-sm-7">
                                     <button type="submit" class="width-35 pull-right btn btn-sm btn-primary" ng-click="signUp(signup)" data-ng-disabled="signupForm.$invalid">
-                                        Sign Up
+                                        Enviar
                                     </button>
                                 </div>
                             </div>

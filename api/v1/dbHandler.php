@@ -38,6 +38,9 @@ class DbHandler {
         echo '<script>';
         echo 'console.log('. json_encode( $columns ) .')';
         echo '</script>';
+        echo '<script>';
+        echo 'console.log('. json_encode( $keys ) .')';
+        echo '</script>';
         $query = "INSERT INTO ".$table_name."(".trim($columns,',').") VALUES(".trim($values,',').")";
         echo '<script>';
         echo 'console.log('. json_encode( $query ) .')';

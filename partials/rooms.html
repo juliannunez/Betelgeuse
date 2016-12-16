@@ -22,14 +22,14 @@
                                 <label class="col-sm-5 control-label no-padding-right" for="number">Número</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                        <input type="text" class="form-control" placeholder="Número" name="number" ng-model="room.number" focus/>
+                                        <input type="text" class="form-control" placeholder="Número" name="number" ng-model="room.numero" focus/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-5 control-label no-padding-right" for="capacity">Capacidad</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                <input type="number" class="form-control" name = "capacity" placeholder="Número" ng-model="room.capacity" required/>
+                                <input type="number" class="form-control" name = "capacity" placeholder="Número" ng-model="room.capacidad" required/>
                             </span>
                                 </div>
                             </div>
@@ -37,14 +37,14 @@
                                 <label class="col-sm-5 control-label no-padding-right" for="roomType">Tipo</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Tipo de Aula" ng-model="room.roomType" />
+                                <input type="text" class="form-control" placeholder="Tipo de Aula" ng-model="room.tipo_aula" />
                             </span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <span class="lbl col-sm-5"> </span>
                                 <div class="col-sm-7">
-                                    <button type="submit" class="width-35 pull-right btn btn-sm btn-primary" ng-click="signUp(signup)" data-ng-disabled="signupForm.$invalid">
+                                    <button type="submit" class="width-35 pull-right btn btn-sm btn-primary" ng-click="rooms(rooms)" data-ng-disabled="signupForm.$invalid">
                                         Enviar
                                     </button>
                                 </div>

@@ -35,7 +35,16 @@ class DbHandler {
             $columns = $columns.$desired_key.',';
             $values = $values."'".$$desired_key."',";
         }
+        echo '<script>';
+        echo 'console.log('. json_encode( $columns ) .')';
+        echo '</script>';
+        echo '<script>';
+        echo 'console.log('. json_encode( $values ) .')';
+        echo '</script>';
         $query = "INSERT INTO ".$table_name."(".trim($columns,',').") VALUES(".trim($values,',').")";
+        echo '<script>';
+        echo 'console.log('. json_encode( $query ) .')';
+        echo '</script>';
         $r = $this->conn->query($query) or die($this->conn->error.__LINE__);
 
         if ($r) {
