@@ -208,7 +208,7 @@ $app->post('/disponibilidades', function() use ($app) {
     $hora_hasta = $r->customer->hora_hasta;
     $isUserExists = $db->getOneRecord("select 1 from profesor where nro_doc='$nro_doc'");
     if($isUserExists){
-        $tabble_name = "vinculo_profesor";
+        $tabble_name = "disponibilidad";
         $column_names = array('tipo_doc', 'nro_doc', 'dia', 'hora_desde', 'hora_hasta');
         $result = $db->insertIntoTable($r->customer, $column_names, $tabble_name);
         if ($result != NULL) {
@@ -226,6 +226,36 @@ $app->post('/disponibilidades', function() use ($app) {
         $response["message"] = "No existe este profesor";
         echoResponse(201, $response);
 
+    }
+});
+
+$app->post('/programaciones', function() use ($app) {
+    $response = array();
+    $r = json_decode($app->request->getBody());
+    $db = new DbHandler();
+    $codigo = $r->customer->codigo;
+    $grupo = $r->customer->grupo;
+    $semestre = $r->customer->semestre;
+    $est_matriculados = $r->customer->est_matriculados;
+    $isUserExists = $db->getOneRecord("select 1 from curso where codigo='$codigo'");
+    if($isUserExists){
+        $tabble_name = "curso_programado";
+        $column_names = array('codigo', 'grupo', 'semestre', 'est_matriculados');
+        $result = $db->insertIntoTable($r->customer, $column_names, $tabble_name);
+        if ($result != NULL) {
+            $response["status"] = "success";
+            $response["message"] = "User account created successfully";
+            $response["uid"] = $result;
+            echoResponse(200, $response);
+        } else {
+            $response["status"] = "error";
+            $response["message"] = "Failed to create customer. Please try again";
+            echoResponse(201, $response);
+        }            
+    }else{
+        $response["status"] = "error";
+        $response["message"] = "Este curso no existe";
+        echoResponse(201, $response);
     }
 });
 $app->get('/logout', function() {

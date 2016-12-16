@@ -6,6 +6,7 @@ app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location
     $scope.courses = {};
     $scope.microcurriculos = {};
     $scope.vinculos = {};
+    $scope.programaciones = {};
 
     $scope.doLogin = function (customer) {
         Data.post('login', {
@@ -85,6 +86,19 @@ app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location
     $scope.disponibilidades = {tipo_doc:'',nro_doc:'',dia:'',hora_desde:'',hora_hasta:''};
     $scope.disponibilidades = function (customer) {
         Data.post('disponibilidades', {
+            customer: customer
+        }).then(function (results) {
+            console.log(results);
+            Data.toast(results);
+            if (results.status == "success") {
+                $location.path('dashboard');
+            }
+        });
+    };
+
+    $scope.programaciones = {codigo:'',grupo:'',semestre:'',est_matriculados:''};
+    $scope.programaciones = function (customer) {
+        Data.post('programaciones', {
             customer: customer
         }).then(function (results) {
             console.log(results);
